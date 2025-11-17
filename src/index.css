@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.megamenuparent>li:hover .menu{
+    display: flex !important;
+}
+.downlosd-app:hover .download-from{
+    display: block !important;
+}
+.profile:hover .profileContainer{
+    display: block !important;
+}
