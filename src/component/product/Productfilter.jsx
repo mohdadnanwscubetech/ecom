@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import Productcard from './Productcard'
 import { Commoncontext } from '../context/Context.jsx'
-export default function Productfilter({ products, setmobilemenu, sort, setSORT, limit, setLimit }) {
+export default function Productfilter({ products, setmobilemenu, limit, setLimit, Cardloading, NumOfRecords ,loading, setLoading}) {
 
   let { addtocart } = useContext(Commoncontext)
-  const [loading, setLoading] = useState(false);
+ 
+
+
 
 
 
@@ -16,11 +18,14 @@ export default function Productfilter({ products, setmobilemenu, sort, setSORT, 
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 300;
 
-      if (bottom && !loading) {
+      if (
+        bottom &&
+        !loading &&
+        products.length < NumOfRecords     // <-- Correct check
+      ) {
         setLoading(true);
-        setLimit((prev) => prev + 28); // ✅ increment by 28
+        setLimit((prev) => prev + 28);
 
-        // Prevent multiple triggers
         setTimeout(() => setLoading(false), 1000);
       }
     };
@@ -48,20 +53,55 @@ export default function Productfilter({ products, setmobilemenu, sort, setSORT, 
             </button>
           </div>
         </div>
-        <div className="flex w-[100%] items-baseline justify-end border-b border-gray-200 pt-5 pb-20 ">
+        <div className="flex w-[100%] items-baseline justify-start border-b border-gray-200 pt-5 pb-20 ">
 
 
           <div className="flex justify-center laptop:gap-5 flex-wrap">
             {
-              products.map((v, i) => {
-                if (v.category_slug != "vehicle" && v.category_slug != "motorcycle") {
-                  return (
 
-                    <Productcard v={v}  key={i} />
-                  )
-                }
+              Cardloading
+                ?
+                <div className="laptop:w-[220px] smallmob:w-[50%] border largemob:mt-6 p-3 largemob:rounded-lg animate-pulse">
 
-              })
+                  {/* IMAGE SKELETON */}
+                  <div className="w-full h-[180px] bg-slate-200 rounded-lg relative">
+                    <div className="absolute top-1 right-1 bg-slate-300 h-7 w-7 rounded-full"></div>
+                  </div>
+
+                  {/* PRODUCT NAME */}
+                  <div className="overflow-hidden h-7 w-full mt-2">
+                    <div className="h-3 bg-slate-200 rounded w-[80%]"></div>
+                  </div>
+
+                  {/* PRICE SECTION */}
+                  <div className="flex items-center mt-2 space-x-4">
+                    <div className="h-4 bg-slate-200 rounded w-16"></div>
+                    <div className="h-3 bg-slate-200 rounded w-12"></div>
+                    <div className="h-3 bg-slate-200 rounded w-10"></div>
+                  </div>
+
+                  {/* RATING */}
+                  <div className="h-6 bg-slate-200 rounded-xl w-20 mt-4"></div>
+
+                  {/* FREE DELIVERY TAG */}
+                  <div className="pb-2 mt-3">
+                    <div className="h-5 bg-slate-200 rounded-full w-[92px] mx-auto"></div>
+                  </div>
+
+                  {/* ADD TO CART BUTTON */}
+                  <div className="h-9 bg-slate-300 w-full rounded-md mt-2"></div>
+                </div>
+
+                :
+                products.map((v, i) => {
+                  if (v.category_slug != "vehicle" && v.category_slug != "motorcycle") {
+                    return (
+
+                      <Productcard v={v} key={i} />
+                    )
+                  }
+
+                })
             }
 
             {/* /<!--col-end-->       */}

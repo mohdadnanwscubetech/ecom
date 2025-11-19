@@ -11,7 +11,7 @@ import cashondelivery from '../../assets/images/cod_new.png'
 import returndel from '../../assets/images/return_new.png'
 import { useParams } from 'react-router-dom';
 export default function ProductView() {
-  let { addtocart } = useContext(Commoncontext)
+  let { addtocart, deleteCart, cartitems } = useContext(Commoncontext)
   let [ProductViewData, setProductViewData] = useState([])
   let [imagess, setimages] = useState([])
   let [displayimg, setdisplayimg] = useState('')
@@ -31,7 +31,7 @@ export default function ProductView() {
         setProductViewData(response.data.product);
         setimages(response.data.product.multiple_images)
 
-  
+
 
 
 
@@ -47,7 +47,21 @@ export default function ProductView() {
     setdisplayimg(e)
   }
 
+  let [showButton, setShowButton] = useState(false)
 
+  useEffect(() => {
+    const exists = cartitems.some(item => item.id === params.id);
+    setShowButton(exists);
+  }, [cartitems, params]);
+
+
+  const addCart = () => {
+    if (showButton) {
+      deleteCart(params.id);
+    } else {
+      addtocart(ProductViewData);
+    }
+  };
 
 
 
@@ -96,10 +110,19 @@ export default function ProductView() {
 
               </div>
               <div className='border-b-[1px] border-[gray] py-8 flex justify-evenly'>
-                <button className='w-[46%] rounded justify-center border-[#9F2089] text-[#9F2089] gap-2 py-[10px] flex text-[18px] font-semibold  border text-center'>
+                <button
+                  onClick={addCart}
+                  className={` w-[46%] rounded justify-center gap-2 py-[10px] flex text-[18px] font-semibold border text-center
+                      ${showButton
+                      ? "border-red-600 text-red-600"           // REMOVE button
+                      : "border-[#9F2089] text-[#9F2089]"       // ADD button
+                    }
+  `}
+                >
                   <BsCart2 className='text-[19px] mt-[1px]' />
-                  <div>Add to Cart</div>
+                  <div>{showButton ? "Remove From Cart" : "Add To Cart"}</div>
                 </button>
+
                 <button className='w-[46%] border rounded justify-center border-[#9F2089] text-[white] bg-[#9F2089] gap-2 py-[10px] flex text-[18px] font-semibold   text-center'>
                   <RxDoubleArrowRight className='text-[23px] mt-[1px]' />
                   Buy now</button>

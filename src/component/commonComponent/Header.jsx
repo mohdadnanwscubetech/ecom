@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import logo from '../../assets/images/meeshoLogo.svg'
+import logo from '../../assets/images/logo.png'
 import { BsCart2 } from "react-icons/bs";
 
 import { FiMenu } from "react-icons/fi";
@@ -21,15 +21,15 @@ export default function Header() {
             <div className=' max-w-[100%]  z-[999] bg-[white] sticky px-4 top-0 '>
                 <header className='max-w-[1330px] border-[black]  border-b-[0.5px] bg-[white] largelaptop:gap-0  flex m-auto largelaptop:px-0  laptop:items-center smallmob:flex-col laptop:flex-row tablet:justify-between mx-auto ' >
 
-                    <figure className='flex justify-between laptop:static sticky  top-0 laptop:py-0 py-5'>
-                        <div className='flex'>
+                    <figure className='flex justify-between laptop:static sticky  items-center top-0 laptop:py-0 py-5'>
+                        <div className='flex items-center'>
 
                             <FiMenu
                                 // onClick={()=>setmobilemenu(true)}
                                 className='laptop:hidden me-4  text-[24px]' />
 
 
-                            <Link to={'/'}><img src={logo} className='laptop:w-[156px] w-[87px] laptop:h-9 h-5' alt="" /></Link>
+                            <Link to={'/'}><img src={logo} className='laptop:w-[156px] w-[87px]  ' alt="" /></Link>
 
                         </div>
                         <div className='laptop:hidden gap-[15px] text-[23px] flex'>

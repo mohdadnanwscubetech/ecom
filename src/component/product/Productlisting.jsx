@@ -27,10 +27,25 @@ export default function Productlisting() {
 
     let [clear, setclears] = useState(false)
 
+    let [NumOfRecords, setNumOfRecords] = useState(28)
+
+    const [Cardloading, setCardloading] = useState(true);
+
+     const [loading, setLoading] = useState(false);
+
 
     let [mobilemenu, setmobilemenu] = useState(false)
 
-    let [limit,setLimit] = useState(28)
+    let [limit, setLimit] = useState(28)
+
+    
+    useEffect(() => {
+        setLimit(28);      
+        setLoading(false); 
+        setCardloading(true);
+    }, [cat, sort, BRAND, rating, filter, filbrand]);
+
+
 
     useEffect(() => {
         axios.get('https://wscubetech.co/ecommerce-api/brands.php')
@@ -50,9 +65,10 @@ export default function Productlisting() {
             .then(function (response) {
                 // handle succes
                 setproducts(response.data.data);
-                settotalpages(response.data.total_pages)
+                setNumOfRecords(response.data.total_records)
 
                 // setLoader(false)
+                setCardloading(false)
 
             })
             .catch(function (error) {
@@ -99,7 +115,7 @@ export default function Productlisting() {
                         filbrand={filbrand}
                         setfilbrand={setfilbrand}
                         mobilemenu={mobilemenu}
-                        setmobilemenu={setmobilemenu} 
+                        setmobilemenu={setmobilemenu}
 
                         setrating={setrating}
                         sort={sort}
@@ -107,17 +123,19 @@ export default function Productlisting() {
                     />
 
                     <Productfilter
-                        sort={sort} ///
-                        setSORT={setSORT} //
+                        
                         cat={cat}
                         setLimit={setLimit}
                         limit={limit}
+                        NumOfRecords={NumOfRecords}
                         setcat={setcat}
                         products={products}
                         clear={clear}
                         setclears={setclears}
-                        
-                         mobilemenu={mobilemenu}
+                        Cardloading={Cardloading}
+                        loading={loading}
+                         setLoading={setLoading}
+                        mobilemenu={mobilemenu}
                         setmobilemenu={setmobilemenu}
                     />
                 </div>

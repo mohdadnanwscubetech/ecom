@@ -44,18 +44,16 @@ export default function Productcard({ v }) {
           <h5 className="text-[#8B8BA3] pt-1 largemob:text-[16px] text-[10px] font-medium">{v.name}</h5>
         </div>
         <div className="flex items-center ">
-          <p className='p-0  flex items-center m-0'><FaIndianRupeeSign className="largemob:text-[20px] text-[12px] " />
+          <p className='p-0 flex items-center m-0'>
+            <FaIndianRupeeSign className="largemob:text-[20px] text-[12px]" />
             <span className="largemob:text-[24px] text-[15px] font-bold">
               {v.price}
             </span>
           </p>
-          <div className="line-through largemob:text-[16px] text-[11px] flex items-center font-medium text-[#8B8BA3] px-2">
-            {/* Discounted Price / (1 - (Discount Percentage / 100)) */}
-            <FaIndianRupeeSign className="largemob:text-[14px] text-[9px] largemob:mt-1 line-through " />
-            {
-              Math.floor(v.price / (1 - (v.discount_percentage / 100)))
 
-            }
+          <div className="line-through largemob:text-[16px] text-[11px] flex items-center font-medium text-[#8B8BA3] px-2">
+            <FaIndianRupeeSign className="largemob:text-[14px] text-[9px]" />
+            {Math.floor(v.price / (1 - (v.discount_percentage / 100)))}
           </div>
           <div className="text-[green] largemob:text-[16px] text-[11px]  font-semibold">
             {v.discount_percentage}% off
