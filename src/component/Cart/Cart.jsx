@@ -19,7 +19,7 @@ export default function Cart() {
 
     return (
 
-        <div className="font-sans max-w-4xl max-tablet:max-w-xl mx-auto p-4">
+        <div className="font-sans max-w-4xl max-md:max-w-xl mx-auto p-4">
 
             {/* ✅ EMPTY CART CONDITION */}
             {cartitems.length === 0 ? (
@@ -46,10 +46,10 @@ export default function Cart() {
                 <>
                     <h1 className="text-2xl font-extrabold text-gray-800">Your Cart</h1>
 
-                    <div className="grid tablet:grid-cols-3 gap-4 mt-8">
+                    <div className="grid md:grid-cols-3 gap-4 mt-8">
 
                         {/* LEFT SIDE: ITEMS */}
-                        <div className="tablet:col-span-2 space-y-4">
+                        <div className="md:col-span-2 space-y-4">
                             {cartitems.map((v, i) => (
                                 <CartCard deleteCart={deleteCart} v={v} key={i} />
                             ))}

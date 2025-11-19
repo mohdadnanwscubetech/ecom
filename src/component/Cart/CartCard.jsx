@@ -7,7 +7,7 @@ export default function CartCard({ v, deleteCart }) {
     return (
         <div class="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]">
             <div class="flex gap-4">
-                <div class="w-28 h-28 max-largemob:w-24 max-largemob:h-24 shrink-0">
+                <div class="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                     <img src={v.image} class="w-full h-full object-contain" />
                 </div>
 

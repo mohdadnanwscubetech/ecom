@@ -29,7 +29,7 @@ export default function Productcard({ v }) {
 
   return (
     <>
-      <div className="laptop:w-[220px] smallmob:w-[50%] border largemob:mt-6 p-3 largemob:rounded-lg ">
+      <div className="lg:w-[220px] w-[50%] border sm:mt-6 p-3 sm:rounded-lg ">
         <div className="w-[100%] relative">
           <Link to={`/ProductView/${v.id}`} >
             <img className='rounded-t-lg' src={v.image} />
@@ -41,28 +41,28 @@ export default function Productcard({ v }) {
 
         </div>
         <div className="overflow-hidden h-7 w-full  ">
-          <h5 className="text-[#8B8BA3] pt-1 largemob:text-[16px] text-[10px] font-medium">{v.name}</h5>
+          <h5 className="text-[#8B8BA3] pt-1 sm:text-[16px] text-[10px] font-medium">{v.name}</h5>
         </div>
         <div className="flex items-center ">
           <p className='p-0 flex items-center m-0'>
-            <FaIndianRupeeSign className="largemob:text-[20px] text-[12px]" />
-            <span className="largemob:text-[24px] text-[15px] font-bold">
+            <FaIndianRupeeSign className="sm:text-[20px] text-[12px]" />
+            <span className="sm:text-[24px] text-[15px] font-bold">
               {v.price}
             </span>
           </p>
 
-          <div className="line-through largemob:text-[16px] text-[11px] flex items-center font-medium text-[#8B8BA3] px-2">
-            <FaIndianRupeeSign className="largemob:text-[14px] text-[9px]" />
+          <div className="line-through sm:text-[16px] text-[11px] flex items-center font-medium text-[#8B8BA3] px-2">
+            <FaIndianRupeeSign className="sm:text-[14px] text-[9px]" />
             {Math.floor(v.price / (1 - (v.discount_percentage / 100)))}
           </div>
-          <div className="text-[green] largemob:text-[16px] text-[11px]  font-semibold">
+          <div className="text-[green] sm:text-[16px] text-[11px]  font-semibold">
             {v.discount_percentage}% off
           </div>
         </div>
-        <div className='p-0 m-0 bg-[#038D63] pb-1 largemob:text-[16px] text-[13px] items-center my-3 justify-center w-14 rounded-2xl text-white font-medium flex mb-4' >{v.rating}.0 <FaStar className="largemob:text-[10px] text-[10px] ml-1" /></div>
+        <div className='p-0 m-0 bg-[#038D63] pb-1 sm:text-[16px] text-[13px] items-center my-3 justify-center w-14 rounded-2xl text-white font-medium flex mb-4' >{v.rating}.0 <FaStar className="sm:text-[10px] text-[10px] ml-1" /></div>
         {/* <p>Discount : {v.discount_percentage}</p> */}
         <div className="pb-2">
-          <div className='flex items-center justify-center rounded-full text-[rgb(97,97,115)] largemob:text-[12px] text-[10px] font-semibold w-[92px] py-[3px] bg-[#F8F8FF] text-center'>
+          <div className='flex items-center justify-center rounded-full text-[rgb(97,97,115)] sm:text-[12px] text-[10px] font-semibold w-[92px] py-[3px] bg-[#F8F8FF] text-center'>
             <p>Free Delivery</p>
 
           </div>

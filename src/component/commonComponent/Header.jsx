@@ -19,20 +19,20 @@ export default function Header() {
         <>
             <ToastContainer className={'z-[99999]'} />
             <div className=' max-w-[100%]  z-[999] bg-[white] sticky px-4 top-0 '>
-                <header className='max-w-[1330px] border-[black]  border-b-[0.5px] bg-[white] largelaptop:gap-0  flex m-auto largelaptop:px-0  laptop:items-center smallmob:flex-col laptop:flex-row tablet:justify-between mx-auto ' >
+                <header className='max-w-[1330px] border-[black]  border-b-[0.5px] bg-[white] xl:gap-0  flex m-auto xl:px-0  lg:items-center flex-col lg:flex-row md:justify-between mx-auto ' >
 
-                    <figure className='flex justify-between laptop:static sticky  items-center top-0 laptop:py-0 py-5'>
+                    <figure className='flex justify-between lg:static sticky  items-center top-0 lg:py-0 py-5'>
                         <div className='flex items-center'>
 
                             <FiMenu
                                 // onClick={()=>setmobilemenu(true)}
-                                className='laptop:hidden me-4  text-[24px]' />
+                                className='lg:hidden me-4  text-[24px]' />
 
 
-                            <Link to={'/'}><img src={logo} className='laptop:w-[156px] w-[87px]  ' alt="" /></Link>
+                            <Link to={'/'}><img src={logo} className='lg:w-[156px] w-[87px]  ' alt="" /></Link>
 
                         </div>
-                        <div className='laptop:hidden gap-[15px] text-[23px] flex'>
+                        <div className='lg:hidden gap-[15px] text-[23px] flex'>
 
                             <div className='text-[#C53EAD] relative pt-1 text-[20px]'>
                                 <Link to={'/cart'}>
@@ -52,7 +52,7 @@ export default function Header() {
                     </figure>
 
 
-                    <nav className='hidden  font-medium laptop:block '>
+                    <nav className='hidden  font-medium lg:block '>
                         <ul className='flex h-[100%] text-[17px]' >
 
 
@@ -67,7 +67,7 @@ export default function Header() {
 
 
                                 <Link to='/cart'>
-                                    <div className=' largelaptop:pl-9 h-10 laptop:pl-4 relative laptop:pr-4 largelaptop:pr-[27px]'>
+                                    <div className=' xl:pl-9 h-10 lg:pl-4 relative lg:pr-4 xl:pr-[27px]'>
                                         <BsCart2 className='w-[100%] text-[20px]' />Cart
                                         {
                                             (cartitems == '')

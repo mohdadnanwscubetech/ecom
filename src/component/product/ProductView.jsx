@@ -70,9 +70,9 @@ export default function ProductView() {
   return (
     <>
       <div className='w-[100%]'>
-        <div className='max-w-[1330px] mx-auto py-5  gap-3 tablet:flex'>
-          <div className='tablet:basis-[49%] flex   ' >
-            <div className='basis-[11%] largemob:block hidden'>
+        <div className='max-w-[1330px] mx-auto py-5  gap-3 md:flex'>
+          <div className='md:basis-[49%] flex   ' >
+            <div className='basis-[11%] sm:block hidden'>
               {
                 imagess.map((v, i) => {
                   return (
@@ -84,15 +84,15 @@ export default function ProductView() {
                 })
               }
             </div>
-            <div className='tablet:basis-[86%]  basis-[100%] '>
+            <div className='md:basis-[86%]  basis-[100%] '>
               <div className='border flex items-center justify-center rounded-md '>
-                <img className='largemob:h-[472px]' loading='lazy' src={
+                <img className='sm:h-[472px]' loading='lazy' src={
                   // ProductViewData.image ? ProductViewData.image : displayimg
                   (displayimg == '') ? ProductViewData.image : displayimg
                 }
                   alt="" />
               </div>
-              <div className='flex  justify-evenly largemob:hidden'>
+              <div className='flex  justify-evenly sm:hidden'>
                 {
                   imagess.map((v, i) => {
                     console.log(v)
@@ -133,7 +133,7 @@ export default function ProductView() {
 
           </div>
 
-          <div className='tablet:basis-[49%] rounded-md ' >
+          <div className='md:basis-[49%] rounded-md ' >
             <div className='py-[15px] px-[10px] rounded-md border   '>
               <h3 className='font-semibold text-[19px] text-[#8B8BA3]'>
                 {

@@ -100,7 +100,7 @@ export default function Productlisting() {
 
 
 
-                <div className='flex max-w-[1350px] laptop:gap-[20px] mx-[auto]'>
+                <div className='flex max-w-[1350px] lg:gap-[20px] mx-[auto]'>
                     <Filterproductsidebar
 
                         cat={cat}

@@ -30,7 +30,7 @@ export default function Footer() {
             </div>
 
           </div>
-          <div className='tablet:block hidden'>
+          <div className='md:block hidden'>
             <ul className='text-[18px] flex font-semibold  flex-col gap-5 text-[rgb(97,97,115)]'>
               <li>Careers</li>
               <li>Become a supplier</li>
@@ -38,7 +38,7 @@ export default function Footer() {
               <li>Sitemap</li>
             </ul>
           </div>
-          <div className='tablet:block hidden'>
+          <div className='md:block hidden'>
             <ul className='text-[18px] flex font-semibold  flex-col gap-5 text-[rgb(97,97,115)]'>
               <li>
                 Legal and Policies
@@ -55,7 +55,7 @@ export default function Footer() {
 
             </ul>
           </div>
-          <div className='tablet:block hidden'>
+          <div className='md:block hidden'>
             <ul>
               <li className='text-[20px] font-semibold'>
                 Reach out to us
@@ -69,7 +69,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className='basis-[19%] tablet:block hidden'>
+          <div className='basis-[19%] md:block hidden'>
             <h3 className='text-[20px] font-semibold'>
               Contact Us
             </h3>

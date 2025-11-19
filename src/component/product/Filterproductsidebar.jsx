@@ -447,7 +447,7 @@ export default function Filterproductsidebar({ Categories,
 
 
       {/* //----------------WEBSITE SIDE BAR ------------------------------------------------------------------->>>> */}
-      <main className=" basis-[25%]  hidden laptop:block ">
+      <main className=" basis-[25%]  hidden lg:block ">
 
 
         <section aria-labelledby="products-heading" className="p-2  border border-[2px ] basis-[30%] pt-6">
@@ -455,7 +455,7 @@ export default function Filterproductsidebar({ Categories,
 
           <div className=" ">
             {/* <!-- Filters --> */}
-            <form className="hidden laptop:block">
+            <form className="hidden lg:block">
               <h3 className="text-[25px]">Filter</h3>
 
               <div className="border-b  border-gray-200 py-6">
