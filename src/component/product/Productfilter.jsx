@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import Productcard from './Productcard'
 import { Commoncontext } from '../context/Context.jsx'
-export default function Productfilter({  setmobilemenu, limit, setLimit, Cardloading, NumOfRecords ,loading, setLoading}) {
+export default function Productfilter({ setmobilemenu, limit, setLimit, Cardloading, NumOfRecords, loading, setLoading }) {
 
   let { products } = useContext(Commoncontext)
- 
+
 
 
 
@@ -61,36 +61,37 @@ export default function Productfilter({  setmobilemenu, limit, setLimit, Cardloa
 
               Cardloading
                 ?
-                <div className="lg:w-[220px] w-[50%] border sm:mt-6 p-3 sm:rounded-lg animate-pulse">
+                <div className="lg:w-[220px] w-[100%] xs:w-full border sm:mt-6 p-2 sm:p-3 rounded-lg animate-pulse">
 
                   {/* IMAGE SKELETON */}
-                  <div className="w-full h-[180px] bg-slate-200 rounded-lg relative">
-                    <div className="absolute top-1 right-1 bg-slate-300 h-7 w-7 rounded-full"></div>
+                  <div className="w-full h-[150px] sm:h-[180px] bg-slate-200 rounded-lg relative">
+                    <div className="absolute top-1 right-1 bg-slate-300 h-6 w-6 sm:h-7 sm:w-7 rounded-full"></div>
                   </div>
 
                   {/* PRODUCT NAME */}
-                  <div className="overflow-hidden h-7 w-full mt-2">
+                  <div className="overflow-hidden h-5 sm:h-7 w-full mt-2">
                     <div className="h-3 bg-slate-200 rounded w-[80%]"></div>
                   </div>
 
                   {/* PRICE SECTION */}
-                  <div className="flex items-center mt-2 space-x-4">
-                    <div className="h-4 bg-slate-200 rounded w-16"></div>
-                    <div className="h-3 bg-slate-200 rounded w-12"></div>
-                    <div className="h-3 bg-slate-200 rounded w-10"></div>
+                  <div className="flex items-center mt-2 space-x-2 sm:space-x-4">
+                    <div className="h-3 sm:h-4 bg-slate-200 rounded w-12 sm:w-16"></div>
+                    <div className="h-3 bg-slate-200 rounded w-10 sm:w-12"></div>
+                    <div className="h-3 bg-slate-200 rounded w-8 sm:w-10"></div>
                   </div>
 
                   {/* RATING */}
-                  <div className="h-6 bg-slate-200 rounded-xl w-20 mt-4"></div>
+                  <div className="h-5 sm:h-6 bg-slate-200 rounded-xl w-16 sm:w-20 mt-3 sm:mt-4"></div>
 
                   {/* FREE DELIVERY TAG */}
                   <div className="pb-2 mt-3">
-                    <div className="h-5 bg-slate-200 rounded-full w-[92px] mx-auto"></div>
+                    <div className="h-4 sm:h-5 bg-slate-200 rounded-full w-[80px] sm:w-[92px] mx-auto"></div>
                   </div>
 
                   {/* ADD TO CART BUTTON */}
-                  <div className="h-9 bg-slate-300 w-full rounded-md mt-2"></div>
+                  <div className="h-8 sm:h-9 bg-slate-300 w-full rounded-md mt-2"></div>
                 </div>
+
 
                 :
                 products.map((v, i) => {

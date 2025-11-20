@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Commoncontext } from '../context/Context.jsx'
 import CartCard from './CartCard.jsx'
+import { Link } from 'react-router-dom'
 
 export default function Cart() {
     let { cartitems, deleteCart } = useContext(Commoncontext)
@@ -32,13 +33,14 @@ export default function Cart() {
                     <p className="text-gray-500 mt-2 text-center max-w-sm">
                         Looks like you haven’t added anything to your cart yet.
                     </p>
-
+                    <Link to={'/'}>
                     <button
-                        onClick={() => window.history.back()}
+                       
                         className="mt-6 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-md"
                     >
                         Continue Shopping
                     </button>
+                    </Link>
                 </div>
             ) : (
 
