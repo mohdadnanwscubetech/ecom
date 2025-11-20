@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
 
-export default function Filterproductsidebar({ Categories,
-  // setbrand,
+export default function Filterproductsidebar({
+  Categories,
   brand,
-  cat,
-  setcat,
-  setFilter,
-  filter,
-  setLoader,
-  SETBRAND,
-  BRAND,
-  filbrand,
-  setfilbrand,
-  setSORT,
+  selectedCategories,
+  setSelectedCategories,
+  setSelectedBrands,
+  selectedBrands,
+  setSelectedSort,
+  selectedSort,
   setrating,
-  mobilemenu, setmobilemenu }) {
+  mobilemenu,
+  setmobilemenu }) {
 
 
   let [opencat, setopencat] = useState(true);
@@ -23,50 +20,29 @@ export default function Filterproductsidebar({ Categories,
 
   let [opensort, setopensort] = useState(true);
 
-
-
   let [openrating, setopenrating] = useState(true)
 
 
   // GetBrandSlug is a function that store a slug of brand------------------------------------------------------------>>>>>
   let GetBrandSlug = (slug) => {
-    if (BRAND.includes(slug)) {
-      var category = BRAND.filter((v, i) => {
-        if (v != slug) {
-          return v;
-        }
-      })
-      SETBRAND(category)
+    if (selectedBrands.includes(slug)) {
+      setSelectedBrands(selectedBrands.filter(v => v !== slug));
+    } else {
+      setSelectedBrands([...selectedBrands, slug]);
     }
-    else {
-      BRAND.push(slug)
-      // SETBRAND(BRAND)
-    }
-    setfilbrand(!filbrand);
-  }
+  };
+
 
 
   // GetCategorySlug is a function that store a slug of product------------------------------------------------------------>>>>>
   let GetCategorySlug = (slug) => {
-    ///if cat contain same slug that GetCategorySlug function have ---------------------------------------------------------->>>>
-    if (cat.includes(slug)) {
-      var category = cat.filter((v, i) => {
-        // if cat not have slug------------------------------------------------------------->>>>>>
-        if (v != slug) {
-          return v; //value store in category variable 
-        }
-      })
-      setcat(category)
+    if (selectedCategories.includes(slug)) {
+      setSelectedCategories(selectedCategories.filter(v => v !== slug));
+    } else {
+      setSelectedCategories([...selectedCategories, slug]);
     }
-    else {
-      cat.push(slug)
-      setcat(cat)
-    }
-    setFilter(!filter);
+  };
 
-    setLoader(true);
-
-  }
 
 
 
@@ -130,11 +106,11 @@ export default function Filterproductsidebar({ Categories,
 
                     <div className="flex items-center">
                       <input
-                        id="sort-1"   
+                        id="sort-1"
                         type="radio"
                         name="sort"
                         value="1"
-                        onChange={()=>setSORT("1")}
+                        onChange={() => setSelectedSort("1")}
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
                       <label htmlFor="sort-1" className="ml-3 text-sm text-gray-600 cursor-pointer">
@@ -147,7 +123,7 @@ export default function Filterproductsidebar({ Categories,
                         id="sort-2"
                         type="radio"
                         name="sort"
-                        onChange={()=>setSORT("2")}
+                        onChange={() => setSelectedSort("2")}
                         value="2"
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
@@ -160,7 +136,7 @@ export default function Filterproductsidebar({ Categories,
                       <input
                         id="sort-3"
                         type="radio"
-                        onChange={()=>setSORT("3")}
+                        onChange={() => setSelectedSort("3")}
                         name="sort"
                         value="3"
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
@@ -176,7 +152,7 @@ export default function Filterproductsidebar({ Categories,
                         type="radio"
                         name="sort"
                         value="4"
-                        onChange={()=>setSORT("4")}
+                        onChange={() => setSelectedSort("4")}
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
                       <label htmlFor="sort-4" className="ml-3 text-sm text-gray-600 cursor-pointer">
@@ -189,7 +165,7 @@ export default function Filterproductsidebar({ Categories,
                         id="sort-5"
                         type="radio"
                         name="sort"
-                        onChange={()=>setSORT("5")}
+                        onChange={() => setSelectedSort("5")}
                         value="5"
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
@@ -204,7 +180,7 @@ export default function Filterproductsidebar({ Categories,
                         type="radio"
                         name="sort"
                         value="6"
-                        onChange={()=>setSORT("6")}
+                        onChange={() => setSelectedSort("6")}
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
                       <label htmlFor="sort-6" className="ml-3 text-sm text-gray-600 cursor-pointer">
@@ -215,7 +191,7 @@ export default function Filterproductsidebar({ Categories,
                     <div className="flex items-center">
                       <input
                         id="sort-7"
-                        onChange={()=>setSORT("7")}
+                        onChange={() => setSelectedSort("7")}
                         type="radio"
                         name="sort"
                         value="7"
@@ -231,7 +207,7 @@ export default function Filterproductsidebar({ Categories,
                         id="sort-8"
                         type="radio"
                         name="sort"
-                        onChange={()=>setSORT("8")}
+                        onChange={() => setSelectedSort("8")}
                         value="8"
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
@@ -446,7 +422,7 @@ export default function Filterproductsidebar({ Categories,
       </div>
 
 
-      {/* //----------------WEBSITE SIDE BAR ------------------------------------------------------------------->>>> */}
+      {/* //----------------DESKTOP SIDE BAR ------------------------------------------------------------------->>>> */}
       <main className=" basis-[25%]  hidden lg:block ">
 
 
@@ -482,98 +458,117 @@ export default function Filterproductsidebar({ Categories,
                 </h3>
                 {/* <!-- Filter section, show/hide based on section state. --> */}
                 <div className={`pt-6 ${opensort ? 'hidden' : ''}`} id="filter-section-0">
-                  <div className="space-y-4" >
+                  <div className="space-y-4">
 
                     <div className="flex items-center">
                       <input
+                        id="sort-1"
                         name="sort"
                         value="1"
-                        onClick={() => setSORT("1")}
+                        checked={selectedSort === "1"}
+                        onChange={() => setSelectedSort("1")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Ascending</label>
+                      <label htmlFor="sort-1" className="ml-3 text-sm text-gray-600">Ascending</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-2"
                         name="sort"
                         value="2"
-                        onClick={() => setSORT("2")}
+                        checked={selectedSort === "2"}
+                        onChange={() => setSelectedSort("2")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Descending</label>
+                      <label htmlFor="sort-2" className="ml-3 text-sm text-gray-600">Descending</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-3"
                         name="sort"
                         value="3"
-                        onClick={() => setSORT("3")}
+                        checked={selectedSort === "3"}
+                        onChange={() => setSelectedSort("3")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Price Low to High</label>
+                      <label htmlFor="sort-3" className="ml-3 text-sm text-gray-600">Price Low to High</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-4"
                         name="sort"
                         value="4"
-                        onClick={() => setSORT("4")}
+                        checked={selectedSort === "4"}
+                        onChange={() => setSelectedSort("4")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Price High to Low</label>
+                      <label htmlFor="sort-4" className="ml-3 text-sm text-gray-600">Price High to Low</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-5"
                         name="sort"
                         value="5"
-                        onClick={() => setSORT("5")}
+                        checked={selectedSort === "5"}
+                        onChange={() => setSelectedSort("5")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Discounted Price Low to High</label>
+                      <label htmlFor="sort-5" className="ml-3 text-sm text-gray-600">Discounted Price Low to High</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-6"
                         name="sort"
                         value="6"
-                        onClick={() => setSORT("6")}
+                        checked={selectedSort === "6"}
+                        onChange={() => setSelectedSort("6")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Discounted Price High to Low</label>
+                      <label htmlFor="sort-6" className="ml-3 text-sm text-gray-600">Discounted Price High to Low</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-7"
                         name="sort"
                         value="7"
-                        onClick={() => setSORT("7")}
+                        checked={selectedSort === "7"}
+                        onChange={() => setSelectedSort("7")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Rating Low to High</label>
+                      <label htmlFor="sort-7" className="ml-3 text-sm text-gray-600">Rating Low to High</label>
                     </div>
 
                     <div className="flex items-center">
                       <input
+                        id="sort-8"
                         name="sort"
                         value="8"
-                        onClick={() => setSORT("8")}
+                        checked={selectedSort === "8"}
+                        onChange={() => setSelectedSort("8")}
                         type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4"
                       />
-                      <label className="ml-3 text-sm text-gray-600">Rating High to Low</label>
+                      <label htmlFor="sort-8" className="ml-3 text-sm text-gray-600">Rating High to Low</label>
                     </div>
 
                   </div>
                 </div>
+
+
+
 
               </div>
               <div className="border-b border-gray-200 py-6">
@@ -612,7 +607,7 @@ export default function Filterproductsidebar({ Categories,
                               name="categories"
                               id={`category-${v.slug}`}
                               onChange={() => GetCategorySlug(v.slug)} // 👈 yahan change karo
-                              checked={(cat.includes(v.slug))}
+                              checked={(selectedCategories.includes(v.slug))}
                               className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                             />
                             <label
@@ -661,7 +656,7 @@ export default function Filterproductsidebar({ Categories,
                       brand.map((v, i) => {
                         return (
                           <div className="flex items-center" key={i}>
-                            <input onClick={() => b(v.slug)} checked={(BRAND.includes(v.slug))} id={`brand-${v.slug}`} name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                            <input onClick={() => b(v.slug)} checked={(selectedBrands.includes(v.slug))} id={`brand-${v.slug}`} name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
                             <label htmlFor={`brand-${v.slug}`} className="ml-3 text-sm text-gray-600">{v.slug}</label>
                           </div>
                         )
@@ -697,26 +692,57 @@ export default function Filterproductsidebar({ Categories,
                 </h3>
                 {/* <!-- Filter section, show/hide based on section state. --> */}
                 <div className={`pt-6 ${openrating ? 'hidden' : ''}`} id="filter-section-2">
-                  <div className="space-y-4" onClick={(event) => { setrating(event.target.value) }}>
+                  <div className="space-y-4">
                     <div className="flex items-center">
-                      <input id="filter-size-0" name="size" value="4" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                      <label htmlFor="filter-size-0" className="ml-3 text-sm text-gray-600">4★ & above</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input id="filter-size-1" name="size" value="3" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                      <label htmlFor="filter-size-1" className="ml-3 text-sm text-gray-600">3★ & above  </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input id="filter-size-2" name="size" value="2" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                      <label htmlFor="filter-size-2" className="ml-3 text-sm text-gray-600">2★ & above</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input id="filter-size-3" name="size" value="1" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                      <label htmlFor="filter-size-3" className="ml-3 text-sm text-gray-600">1★ & above</label>
+                      <input
+                        id="rating-4"
+                        name="rating"
+                        value="4"
+                        onChange={(e) => setrating(e.target.value)}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label htmlFor="rating-4" className="ml-3 text-sm text-gray-600">4★ & above</label>
                     </div>
 
+                    <div className="flex items-center">
+                      <input
+                        id="rating-3"
+                        name="rating"
+                        value="3"
+                        onChange={(e) => setrating(e.target.value)}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label htmlFor="rating-3" className="ml-3 text-sm text-gray-600">3★ & above</label>
+                    </div>
+
+                    <div className="flex items-center">
+                      <input
+                        id="rating-2"
+                        name="rating"
+                        value="2"
+                        onChange={(e) => setrating(e.target.value)}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label htmlFor="rating-2" className="ml-3 text-sm text-gray-600">2★ & above</label>
+                    </div>
+
+                    <div className="flex items-center">
+                      <input
+                        id="rating-1"
+                        name="rating"
+                        value="1"
+                        onChange={(e) => setrating(e.target.value)}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label htmlFor="rating-1" className="ml-3 text-sm text-gray-600">1★ & above</label>
+                    </div>
                   </div>
                 </div>
+
               </div>
 
             </form>

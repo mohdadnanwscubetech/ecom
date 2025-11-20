@@ -4,7 +4,6 @@ import { FaIndianRupeeSign } from "react-icons/fa6";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { Commoncontext } from '../context/Context.jsx';
 import { BsCart2 } from "react-icons/bs";
-import Productcard from './Productcard.jsx';
 import axios, { all } from 'axios';
 import lowestprice from '../../assets/images/lowest_price_new.png'
 import cashondelivery from '../../assets/images/cod_new.png'
@@ -19,6 +18,8 @@ export default function ProductView() {
 
   // --------------------------------------------------------------------------------------------------------------------------------------->>>
   const params = useParams()
+
+
   useEffect(() => {
     setimages([]);
     setdisplayimg('')
@@ -117,7 +118,7 @@ export default function ProductView() {
                       ? "border-red-600 text-red-600"           // REMOVE button
                       : "border-[#9F2089] text-[#9F2089]"       // ADD button
                     }
-  `}
+                           `}
                 >
                   <BsCart2 className='text-[19px] mt-[1px]' />
                   <div>{showButton ? "Remove From Cart" : "Add To Cart"}</div>

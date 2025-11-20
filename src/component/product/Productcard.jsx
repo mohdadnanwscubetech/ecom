@@ -71,7 +71,7 @@ export default function Productcard({ v }) {
         <button
           onClick={addCart}
           className={`rounded-md w-full my-1 px-3 py-2 text-sm font-semibold text-white shadow-sm 
-    ${showButton
+            ${showButton
               ? "bg-red-600 hover:bg-red-500"        // REMOVE button
               : "bg-indigo-600 hover:bg-indigo-500"  // ADD button
             }`

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import Productcard from './Productcard'
 import { Commoncontext } from '../context/Context.jsx'
-export default function Productfilter({ products, setmobilemenu, limit, setLimit, Cardloading, NumOfRecords ,loading, setLoading}) {
+export default function Productfilter({  setmobilemenu, limit, setLimit, Cardloading, NumOfRecords ,loading, setLoading}) {
 
-  let { addtocart } = useContext(Commoncontext)
+  let { products } = useContext(Commoncontext)
  
 
 
